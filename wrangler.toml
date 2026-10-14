@@ -1,0 +1,11 @@
+name = "little-moments-studio"
+compatibility_date = "2026-10-01"
+pages_build_output_dir = "."
+
+[[kv_namespaces]]
+binding = "EVENTS_KV"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+
+[[r2_buckets]]
+binding = "EVENT_PHOTOS"
+bucket_name = "REPLACE_WITH_YOUR_R2_BUCKET_NAME"

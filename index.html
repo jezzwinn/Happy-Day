@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100d20">
+  <meta name="description" content="A little collection of celebrations, memories and love.">
+  <title>Little Moments Studio ✨</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="./">Little Moments <span>✦</span></a>
+    <button class="admin-open" id="adminOpen" type="button">🔐 Admin login</button>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">A LITTLE CELEBRATION STUDIO</p>
+      <h1>Make every moment<br><span>feel special.</span> ✨</h1>
+      <p class="intro">Birthdays, anniversaries, milestones and all the little things worth celebrating.</p>
+      <a class="primary-button" href="#celebrations">Explore celebrations <span>↓</span></a>
+      <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+    </section>
+    <section class="celebrations wrap" id="celebrations">
+      <div class="section-heading"><div><p class="eyebrow">MADE WITH LOVE</p><h2>Celebrations <span>& memories.</span></h2></div><p class="muted">Every person. Every story. Every little moment.</p></div>
+      <div id="eventGrid" class="event-grid"></div>
+      <p id="emptyState" class="empty-state" hidden>No celebrations have been published yet.</p>
+      <p id="statusMessage" class="status-message" aria-live="polite"></p>
+    </section>
+    <section class="note-section wrap"><div class="note-card"><div class="note-symbol">✧</div><p class="eyebrow">A LITTLE REMINDER</p><h2>Life is made of <span>little moments.</span></h2><p class="muted">Save the photos. Tell the stories. Celebrate the people who make life beautiful.</p></div></section>
+  </main>
+  <footer><p>Made with <span>♥</span> for the moments that matter.</p><p class="footer-brand">LITTLE MOMENTS STUDIO ✦</p></footer>
+
+  <div class="admin-backdrop" id="loginBackdrop" hidden>
+    <section class="login-card" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button class="icon-button login-close" id="loginClose" aria-label="Close" type="button">×</button>
+      <p class="eyebrow">PRIVATE WORKSPACE</p><h2 id="loginTitle">Welcome back.</h2>
+      <p class="muted">Sign in to manage your celebrations.</p>
+      <form id="loginForm"><label>Admin password<input id="passwordInput" type="password" autocomplete="current-password" required maxlength="256" placeholder="Enter admin password"></label><button class="primary-button" type="submit" id="loginSubmit">Sign in securely</button><p id="loginError" class="error-message" aria-live="polite"></p></form>
+    </section>
+  </div>
+
+  <div class="admin-backdrop" id="adminBackdrop" hidden>
+    <aside class="admin-panel" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+      <div class="admin-head"><div><p class="eyebrow">AUTHENTICATED WORKSPACE</p><h2 id="adminTitle">Studio Admin</h2></div><button class="icon-button" id="adminClose" aria-label="Close admin" type="button">×</button></div>
+      <div class="notice"><strong>Secure mode:</strong> the server verifies your session. Uploaded photos and celebrations are stored remotely through Cloudflare bindings, not only in this browser.</div>
+      <form id="eventForm" class="admin-form">
+        <input type="hidden" id="editId">
+        <label>Occasion<select id="occasion" required><option>Birthday</option><option>Wedding Anniversary</option><option>Anniversary</option><option>Graduation</option><option>Wedding</option><option>Baby Shower</option><option>New Baby</option><option>Festival</option><option>Achievement</option><option>Thank You</option><option>Congratulations</option><option>Custom</option></select></label>
+        <label>Person / people<input id="people" maxlength="100" placeholder="e.g. Anu & Rahul" required></label>
+        <label>Heading<input id="heading" maxlength="100" placeholder="e.g. Happy Birthday, Anu!" required></label>
+        <label>Message<textarea id="message" rows="3" maxlength="1200" placeholder="Write a personal message..."></textarea></label>
+        <label>From<input id="from" maxlength="100" placeholder="Your name / family name"></label>
+        <label>Photos (choose multiple)<input id="photos" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple><span class="field-help">For best results, use JPG/PNG/WebP photos under 5 MB each.</span></label>
+        <div id="selectedPhotos" class="selected-photos"></div>
+        <div class="form-actions"><button class="primary-button" type="submit" id="saveEvent">Publish celebration</button><button class="secondary-button" type="button" id="cancelEdit" hidden>Cancel edit</button></div>
+        <p id="formError" class="error-message" aria-live="polite"></p>
+      </form>
+      <div class="admin-divider"></div>
+      <div class="admin-subhead"><h3>Published celebrations</h3><span id="eventCount" class="count-pill">0</span></div>
+      <div id="adminEventList" class="admin-event-list"></div>
+      <div class="admin-tools"><button class="secondary-button" id="refreshEvents" type="button">Refresh list</button><button class="secondary-button danger" id="logoutButton" type="button">Log out securely</button></div>
+    </aside>
+  </div>
+</body>
+</html>
